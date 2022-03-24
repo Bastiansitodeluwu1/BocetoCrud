@@ -16,13 +16,18 @@ class variosmetodosrecursos extends Controller
      */
     public function index()
     {
-        //return 'este es el index';
+        //'este es el index';
         //return redirect()->action('holaController');
         //return redirect()->action('UsuarioController@usuariounparametro',
         //['nombre '=> 'bastian carmona']);
         //return redirect('hola');
-        $info = new info();
-        dd($info);
+        $info = info::all();
+        //return view('varios')->with('info',$info);
+        //return view( 'varios' , ['info'=> $info] ); 
+        //return view('varios', compact('info'));  
+        //with se utiliza para mandar un msje indivudialmente
+        // dd(vasriable que se desesa testear); return con asteroide
+        return view('varios.index');
     }
     
 
@@ -33,6 +38,8 @@ class variosmetodosrecursos extends Controller
      */
     public function create()
     {
+        return view('varios.create');
+        /*
         $info = new info;
         $info->nombre='Bastian Carmona';
         $info->descripcion='Alumno en Practica';
@@ -44,6 +51,8 @@ class variosmetodosrecursos extends Controller
             'descripcion' =>'Ingeniero informatico'
         ]);
         return 'Datos Guardados Correctamente';
+        */
+        
     }
 
     /**
@@ -65,9 +74,12 @@ class variosmetodosrecursos extends Controller
      */
     public function show($id)
     {
+        return view('varios.show' , compact('id'));
+       /*
         $info = info::findOrfail($id)->first();
         $info->delete();
          return 'El registro'.$id.'ha sido eliminado correctamente';
+         */
     }
 
     /**
@@ -78,6 +90,7 @@ class variosmetodosrecursos extends Controller
      */
     public function edit($id)
     {
+        /*
        $info = info::findOrfail($id)->first();
 
        //$info = info::where('id','=',$id)
@@ -86,6 +99,8 @@ class variosmetodosrecursos extends Controller
        $info->descripcion ='Programador y Gerente TI';
        $info->save();
         return 'Datos Actualizados';
+*/    
+        return view('varios.edit' , compact('id'));
     }
 
     /**
